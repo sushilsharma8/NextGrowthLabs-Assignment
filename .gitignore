@@ -1,0 +1,76 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+dist/
+build/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.whl
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written into a dist/ folder.
+#  On some operating systems, however, they are written into the
+#  root directory.
+/_MEI*
+*.manifest
+*.spec
+
+# Spyder project
+.spyderproject
+.spyproject
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+*.log
+*.pot
+
+# Translations
+*.mo
+*.po
+
+# Django stuff:
+*.db
+*.sqlite3
+*.media
+local_settings.py
+db.sqlite3
+
+# Celery Beat Schedule
+celerybeat-schedule.bak
+celerybeat-schedule.dat
+celerybeat-schedule.dir
+
+# Cache and temp files
+*.swp
+*~
+tmp/
+temp/
+
+# Docker related
+docker-compose.yml
+dockerfile
+
+# OS generated files
+.DS_Store
+Thumbs.db
