@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-3">Welcome, {{ request.user.username }}</h2>
+<p>Your Points: <strong class="text-primary">100</strong></p>
+
+<h3 class="mt-4">Your Completed Tasks</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>App</th>
+            <th>Screenshot</th>
+        </tr>
+    </thead>
+    <tbody id="task-list">
+        <!-- Tasks will be loaded here via JavaScript -->
+    </tbody>
+</table>
+
+<a href="{% url 'upload_screenshot' %}" class="btn btn-primary mt-3">Upload Screenshot</a>
+<a href="{% url 'logout' %}" class="btn btn-danger mt-3">Logout</a>
+
+<script>
+    async function fetchTasks() {
+        const response = await fetch('/admin-panel/tasks/');
+        const tasks = await response.json();
+        const taskList = document.getElementById('task-list');
+
+        taskList.innerHTML = tasks.map(task => `
+            <tr>
+                <td>${task.app.name}</td>
+                <td><img src="${task.screenshot}" width="100"></td>
+            </tr>
+        `).join('');
+    }
+
+    fetchTasks();
+</script>
+
+{% endblock %}

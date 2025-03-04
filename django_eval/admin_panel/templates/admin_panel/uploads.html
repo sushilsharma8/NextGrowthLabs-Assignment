@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Uploaded Screenshots</h2>
+
+{% if uploads %}
+    <div class="list-group mt-3">
+        {% for upload in uploads %}
+            <div class="list-group-item d-flex align-items-center">
+                <span>{{ upload.user.username }} - {{ upload.app.name }}</span>
+                <img src="{{ upload.screenshot.url }}" class="ms-auto rounded" width="100">
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="text-muted">No uploads yet.</p>
+{% endif %}
+
+{% endblock %}

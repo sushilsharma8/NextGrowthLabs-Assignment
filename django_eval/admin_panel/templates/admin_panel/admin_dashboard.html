@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Admin Panel</h2>
+<h3 class="mt-4">Android Apps</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Points</th>
+        </tr>
+    </thead>
+    <tbody id="app-list">
+        <!-- Apps will be loaded here via JavaScript -->
+    </tbody>
+</table>
+
+<a href="{% url 'add_android_app' %}" class="btn btn-success mt-3">Add New App</a>
+<a href="{% url 'view_uploads' %}" class="btn btn-info mt-3">View Uploads</a>
+
+<script>
+    async function fetchApps() {
+        const response = await fetch('/admin-panel/apps/');
+        const apps = await response.json();
+        const appList = document.getElementById('app-list');
+
+        appList.innerHTML = apps.map(app => `
+            <tr>
+                <td>${app.name}</td>
+                <td>${app.points}</td>
+            </tr>
+        `).join('');
+    }
+
+    fetchApps();
+</script>
+
+{% endblock %}
